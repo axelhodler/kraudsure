@@ -27,8 +27,15 @@ contract KrowdSure {
     depositedAmount += msg.value;
   }
 
+  function issueClaim() {
+    if (!insured.send(fundedAmount)) {
+      throw;
+    }
+  }
+
   function refund(address user) {
     if (user.send(funders[user])) {
+      fundedAmount -= funders[user];
       funders[user] = 0;
     } else {
       throw;

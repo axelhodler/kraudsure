@@ -66,4 +66,11 @@ contract('KrowdSure', function(accounts) {
       assert.equal(balanceInEth(bob), bobBalanceInEthPreRefund);
     });
   });
+
+  it('can trigger the claim transaction', function() {
+    var aliceBalanceInEthPreRefund = balanceInEth(alice);
+    return krowd.issueClaim().then(function() {
+      assert.isAbove(balanceInEth(alice), aliceBalanceInEthPreRefund + 20 - 0.5);
+    });
+  });
 });
