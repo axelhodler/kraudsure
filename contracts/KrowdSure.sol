@@ -7,8 +7,10 @@ contract KrowdSure {
   string public content;
   uint public insuredAmount;
   uint public fundedAmount;
+  uint public toBeFundedUntil;
 
-  function KrowdSure(string _content, uint _insuredAmount, address _oracle) {
+  function KrowdSure(string _content, uint _insuredAmount, address _oracle, uint _toBeFundedUntil) {
+    toBeFundedUntil = _toBeFundedUntil;
     content = _content;
     insuredAmount = _insuredAmount;
     oracle = _oracle;

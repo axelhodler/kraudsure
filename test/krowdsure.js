@@ -7,6 +7,10 @@ contract('KrowdSure', function(accounts) {
     return web3.fromWei(amount, "ether").toNumber();
   }
 
+  function nowInSeconds() {
+    return Math.round(+new Date().getTime() / 1000);
+  }
+
   beforeEach(function() {
     krowd = KrowdSure.deployed();
   });
@@ -32,6 +36,12 @@ contract('KrowdSure', function(accounts) {
   it('sets the contract creator as the insured party', function() {
     return krowd.insured.call().then(function(insured) {
       assert.equal(insured, '0x6ad2f06fad39bfa860769c35fc53027ab1952061');
+    });
+  });
+
+  it('knows when it has to be funded', function() {
+    return krowd.toBeFundedUntil.call().then(function(fundedUntil) {
+      assert.isAtLeast(fundedUntil.valueOf(), nowInSeconds());
     });
   });
 
