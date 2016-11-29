@@ -1,12 +1,58 @@
 <h2>Fund Insurance</h2>
-<md-card ng-repeat="case in $ctrl.cases">
-    <md-card-title>
-        <md-card-title-text>
-            <span class="md-headline">{{ case.title }}</span>
-            <span class="md-subhead"> {{ case.name }}</span>
-        </md-card-title-text>
-        <md-card-title-media>
-            <div class="md-media-sm card-media"><md-icon md-svg-icon="{{ case.avatar }}" class="avatar"></md-icon></div>
-        </md-card-title-media>
-    </md-card-title>
-</md-card>
+<div ng-show="$ctrl.selectedCase === undefined">
+    <md-card ng-repeat="case in $ctrl.cases" ng-click="$ctrl.selectCase(case)">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ case.title }}</span>
+                <span class="md-subhead"> {{ case.name }}</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <div class="md-media-sm card-media"><md-icon md-svg-icon="{{ case.avatar }}" class="avatar"></md-icon></div>
+            </md-card-title-media>
+        </md-card-title>
+        <md-card-content>
+            <p class="md-title">
+                <i class="material-icons md-18">data_usage</i> {{ case.percent }} %
+                <i class="material-icons md-18">euro_symbol</i> {{ case.premium.toFixed(2) }}
+                <i class="material-icons md-18">warning</i> {{ case.amount.toFixed(2) }}
+            </p>
+        </md-card-content>
+    </md-card>
+</div>
+<div ng-show="$ctrl.selectedCase !== undefined">
+    <a href="" ng-click="$ctrl.back()">Back to list</a>
+    <md-card>
+        <md-card-header>
+            <md-card-avatar>
+                <md-icon md-svg-icon="{{ $ctrl.selectedCase.avatar }}" class="md-user-avatar"></md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+                <span class="md-title">{{ $ctrl.selectedCase.name }}</span>
+                <span class="md-subhead">{{ $ctrl.selectedCase.location }}</span>
+            </md-card-header-text>
+        </md-card-header>
+        <img ng-src="{{ $ctrl.selectedCase.image}}" class="md-card-image" alt="Picture">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ $ctrl.selectedCase.title }}</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+            <p class="md-title">
+                <i class="material-icons md-18">data_usage</i> {{ $ctrl.selectedCase.percent }} %
+                <i class="material-icons md-18">euro_symbol</i> {{ $ctrl.selectedCase.premium.toFixed(2) }}
+                <i class="material-icons md-18">warning</i> {{ $ctrl.selectedCase.amount.toFixed(2) }}
+            </p>
+            <p>
+                <span class="md-subhead">{{ $ctrl.selectedCase.description }}</span>
+            </p>
+            <md-slider-container class="md-header">
+                <md-slider flex ng-model="$ctrl.fundpercent" min="0" max="{{ 100 - $ctrl.selectedCase.percent }}" class="md-primary"></md-slider>
+            </md-slider-container>
+            <p>Funding {{ $ctrl.fundpercent }} % | Premium {{ ($ctrl.selectedCase.premium * $ctrl.fundpercent / 100).toFixed(2) }}
+             | Amount {{ ($ctrl.selectedCase.amount * $ctrl.fundpercent / 100).toFixed(2) }}</p>
+            <md-button class="md-raised md-primary" ng-disabled="$ctrl.fundpercent === 0">FUND</md-button>
+        </md-card-content>
+    </md-card>
+</div>

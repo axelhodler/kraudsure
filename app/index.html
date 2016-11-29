@@ -33,21 +33,23 @@
       <!-- Custom UsersList component -->
       <md-content width="4">
         <md-menu-item>
+          <md-button ng-click="app.selectPage('home')">
+            <i class="material-icons">home</i> Home
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
           <md-button ng-click="app.selectPage('new')">
-            <md-icon md-svg-icon="note:add" md-menu-align-target></md-icon>
-            Create Case
+            <i class="material-icons">note_add</i> Create Case
           </md-button>
         </md-menu-item>
         <md-menu-item>
           <md-button ng-click="app.selectPage('fund')">
-            <md-icon md-svg-icon="call:voicemail"></md-icon>
-            Fund Case
+            <i class="material-icons">sentiment_satisfied</i> Fund Case
           </md-button>
         </md-menu-item>
         <md-menu-item>
           <md-button ng-click="app.selectPage('verify')">
-            <md-icon md-svg-icon="social:notifications-{{ctrl.notificationsEnabled ? 'off' : 'on'}}"></md-icon>
-            Verify Damage Event
+            <i class="material-icons">report_problem</i> Verify Damage Event
           </md-button>
         </md-menu-item>
         <md-menu-divider></md-menu-divider>
@@ -58,6 +60,7 @@
     <md-content flex id="content">
       <new-case ng-if="app.selected === 'new'"></new-case>
       <fund-case ng-if="app.selected === 'fund'"></fund-case>
+      <verify-damage ng-if="app.selected === 'verify'"></verify-damage>
     </md-content>
 
   </div>

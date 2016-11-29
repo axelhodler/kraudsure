@@ -14,9 +14,9 @@ export default angular.module( 'starter-app', [ 'ngMaterial', Cases.name ] )
     $mdIconProvider
       .defaultIconSet("./assets/svg/avatars.svg", 128)
       .icon("menu", "./assets/svg/menu.svg", 24)
-      
+
     $mdThemingProvider.theme('default')
-      .primaryPalette('orange')
-      .accentPalette('deep-orange');
+      .primaryPalette('blue')
+      .accentPalette('light-blue');
   })
   .controller('AppController', AppController);
