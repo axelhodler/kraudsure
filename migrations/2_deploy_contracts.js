@@ -1,6 +1,6 @@
 module.exports = function(deployer) {
   var ONE_SECOND = 1;
-  deployer.deploy(KrowdSure,
+  deployer.deploy(Chaininsurance,
     'asdf',
     10000,
     '0xd35bb587f9936d701603523858c9e2ddf18012bf',

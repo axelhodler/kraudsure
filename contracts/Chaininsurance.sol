@@ -1,6 +1,6 @@
 pragma solidity ^0.4.2;
 
-contract KrowdSure {
+contract Chaininsurance {
   mapping (address => uint) public funders;
   address public insured;
   address public oracle;
@@ -10,7 +10,7 @@ contract KrowdSure {
   uint public toBeFundedUntil;
   uint public depositedAmount;
 
-  function KrowdSure(string _content, uint _insuredAmount, address _oracle, uint _toBeFundedUntil) {
+  function Chaininsurance(string _content, uint _insuredAmount, address _oracle, uint _toBeFundedUntil) {
     toBeFundedUntil = _toBeFundedUntil;
     content = _content;
     insuredAmount = _insuredAmount;
