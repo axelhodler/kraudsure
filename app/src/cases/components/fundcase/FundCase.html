@@ -6,7 +6,13 @@
                 <span class="md-subhead"> {{ case.name }}</span>
             </md-card-title-text>
             <md-card-title-media>
-                <div class="md-media-sm card-media"><md-icon md-svg-icon="{{ case.avatar }}" class="avatar"></md-icon></div>
+                <div class="md-media-sm card-media">
+                    <md-icon md-svg-icon="{{ case.avatar }}" class="avatar" ng-if="case.avatar !== undefined"></md-icon>
+                    <md-button class="md-fab" ng-disabled="true" ng-if="case.avatar === undefined">
+                        <i class="material-icons" >person</i>
+                    </md-button>
+
+                </div>
             </md-card-title-media>
         </md-card-title>
         <md-card-content>
@@ -19,7 +25,6 @@
     </md-card>
 </div>
 <div ng-show="$ctrl.selectedCase !== undefined">
-    <a href="" ng-click="$ctrl.back()">Back to list</a>
     <md-card>
         <md-card-header>
             <md-card-avatar>
@@ -30,7 +35,7 @@
                 <span class="md-subhead">{{ $ctrl.selectedCase.location }}</span>
             </md-card-header-text>
         </md-card-header>
-        <img ng-src="{{ $ctrl.selectedCase.image}}" class="md-card-image" alt="Picture">
+        <img ng-src="{{ $ctrl.selectedCase.image}}" class="md-card-image" alt="Picture" style="padding: 0 20px; max-height: 140px;">
         <md-card-title>
             <md-card-title-text>
                 <span class="md-headline">{{ $ctrl.selectedCase.title }}</span>
@@ -50,13 +55,13 @@
         <md-card-actions>
             <form>
                 <md-input-container class="md-icon-float md-icon-right md-block">
-                    <label>Your Share (1 to {{ 100 - $ctrl.selectedCase.percent }} %)</label>
-                    <input ng-model="$ctrl.fundpercent" type="number" step="1">
+                    <label>Your Share (1.00 to {{ ((100 - $ctrl.selectedCase.percent) / 100 * $ctrl.selectedCase.amount).toFixed(2) }} EUR)</label>
+                    <input ng-model="$ctrl.fundamount" type="number" step="1">
+                    <md-icon md-svg-src="assets/svg/ic_euro_24px.svg"></md-icon>
                 </md-input-container>
             </form>
-            <p class="md-title">REVENUE {{ ($ctrl.selectedCase.premium * $ctrl.fundpercent / 100).toFixed(2) }}
-                | LIABILITY {{ ($ctrl.selectedCase.amount * $ctrl.fundpercent / 100).toFixed(2) }}</p>
-            <md-button class="md-raised md-primary" ng-disabled="$ctrl.fundpercent <= 0">FUND</md-button>
+            <p class="md-title" ng-if="$ctrl.fundamount > 0">YOUR REVENUE: {{ ($ctrl.selectedCase.premium * $ctrl.fundamount / $ctrl.selectedCase.amount).toFixed(2) }} EUR</p>
+            <md-button class="md-raised md-primary" ng-disabled="$ctrl.fundamount <= 0 || $ctrl.fundamount > ((100 - $ctrl.selectedCase.percent) / 100 * $ctrl.selectedCase.amount)">FUND</md-button>
         </md-card-actions>
     </md-card>
 </div>
