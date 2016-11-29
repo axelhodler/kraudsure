@@ -1,14 +1,10 @@
 class FundCaseController  {
 
-  /**
-   * Constructor
-   *
-   * @param $log
-   */
-  constructor(CasesDataService, $log) {
+  constructor(CasesDataService, ContractService, $log) {
     this.$log = $log;
     this.fundpercent = 0;
     this.cases = CasesDataService.loadAllCases();
+    this.contractService = ContractService;
   }
 
   selectCase(selected) {
@@ -20,5 +16,8 @@ class FundCaseController  {
     delete this.selectedCase;
   }
 
+  fund() {
+    this.contractService.fund();
+  }
 }
 export default FundCaseController;
