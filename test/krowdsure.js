@@ -47,4 +47,10 @@ contract('KrowdSure', function(accounts) {
     });
   });
 
+  it('will not refund the same user twice', function() {
+    var bobBalanceInEthPreRefund = balanceInEth(bob);
+    return krowd.refund(bob).then(function() {
+      assert.equal(balanceInEth(bob), bobBalanceInEthPreRefund);
+    });
+  });
 });
