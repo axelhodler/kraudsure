@@ -32,11 +32,14 @@
                 md-component-id="left" ng-click="app.toggleList()">
       <!-- Custom UsersList component -->
       <md-content width="4">
+        <img src="assets/images/logo.png" class="md-card-image" style="max-width: 100px; padding: 10px;">
+        <md-divider></md-divider>
         <md-menu-item>
           <md-button ng-click="app.selectPage('home')">
             <i class="material-icons">home</i> Home
           </md-button>
         </md-menu-item>
+        <md-divider></md-divider>
         <md-menu-item>
           <md-button ng-click="app.selectPage('new')">
             <i class="material-icons">note_add</i> Create Case
@@ -52,12 +55,41 @@
             <i class="material-icons">flash_on</i> Verify Damage Event
           </md-button>
         </md-menu-item>
-        <md-menu-divider></md-menu-divider>
+        <md-divider></md-divider>
+        <md-menu-item>
+          <md-button>
+            <i class="material-icons">account_box</i> Account
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            <i class="material-icons">settings</i> Settings
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            <i class="material-icons">info</i> About
+          </md-button>
+        </md-menu-item>
       </md-content>
     </md-sidenav>
 
     <!-- Container #4 -->
     <md-content flex id="content">
+      <div ng-if="app.selected === 'home'">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Crowd Funded Insurance on the Blockchain</span>
+            </md-card-title-text>
+          </md-card-title>
+          <img src="assets/images/logo.png" class="md-card-image">
+          <md-card-content>
+            <p>Low-cost effective insurance for the whole world!</p>
+          </md-card-content>
+        </md-card>
+      </div>
+
       <new-case ng-if="app.selected === 'new'"></new-case>
       <fund-case ng-if="app.selected === 'fund'"></fund-case>
       <verify-damage ng-if="app.selected === 'verify'"></verify-damage>

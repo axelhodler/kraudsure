@@ -9,31 +9,49 @@
 function CasesDataService() {
   var cases = [
     {
+        name: 'Anna Duke',
+        avatar: 'svg-1',
+        title: 'Earthquake Cover',
+        amount: 3500,
+        premium: 420,
+        percent: 39
+    },
+    {
+      name: 'Lawrence Ray',
+      location: 'Suba, Kenya',
+      avatar: 'svg-4',
+      title: 'Crop Failure',
+      description: 'I want to cover the risk of crop failure on my farm for one year. The worth of the total output is typically 1000.00 EUR.',
+      image: 'assets/images/landscape.png',
+      amount: 1000,
+      premium: 100,
+      percent: 50
+    },
+    {
+      name: 'Anonymous User',
+      title: 'Bush Fire',
+      amount: 2000,
+      premium: 350,
+      percent: 21
+    },
+    {
       name: 'Gener Delosreyes',
       avatar: 'svg-3',
       title: 'Sewing Machine',
       amount: 500,
-      premium: 5,
+      premium: 8,
       percent: 73
-    },
-    {
-      name: 'Lawrence Ray',
-      avatar: 'svg-4',
-      title: 'Crop Failure',
-      description: 'I want to cover the risk of crop failure on my farm for one year. The worth of the total output is typically $1000.',
-      amount: 1000,
-      premium: 100,
-      percent: 50
     }
   ];
 
   var damages = [
     {
-        name: 'Lawrence Ray',
-        avatar: 'svg-4',
-        title: 'Crop Failure',
-        damage: 'An extended draught period led to a total crop failure.',
-        image: '',
+        name: 'Robert Delores',
+        location: 'Mombasa, Kenya',
+        avatar: 'svg-2',
+        title: 'Flood Insurance',
+        damage: 'My village was flooded and caused damage in housing of about 1000.00 EUR',
+        image: 'assets/images/flood.png',
         amount: 1000
     }
   ];

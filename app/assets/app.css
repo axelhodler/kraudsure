@@ -44,10 +44,6 @@ md-sidenav md-list {
 /* Primary content area */
 
 #content {
-  overflow: hidden;
-}
-
-#content {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
@@ -142,4 +138,11 @@ md-input-container {
 
 .material-icons {
     vertical-align: sub;
+}
+
+.md-user-avatar {
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    padding: 0;
 }

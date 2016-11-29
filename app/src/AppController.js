@@ -7,7 +7,7 @@
 function AppController($mdSidenav) {
   var self = this;
 
-  self.selected     = 'fund';
+  self.selected     = 'home';
   self.toggleList   = toggleMenuList;
   self.selectPage   = selectPage;
 
