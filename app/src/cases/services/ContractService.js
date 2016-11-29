@@ -33,6 +33,12 @@ function ContractService() {
     });
   };
 
+  this.claimDeposit = function() {
+    return contract.claimDeposit({
+      from: currentUserAddress()
+    });
+  };
+
   this.refund = function() {
     return contract.refund();
   };
