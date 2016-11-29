@@ -12,6 +12,18 @@ contract('Chainsurance: Receive Profis', function(accounts) {
     return toEth(web3.eth.getBalance(account));
   }
 
+  function depositedAmountIsDecreased() {
+    return chaininsurance.depositedAmount.call().then(function(depositedAmount) {
+      assert.isBelow(1, depositedAmount.valueOf());
+    });
+  }
+
+  function carolClaimsDeposit() {
+    return chaininsurance.claimDeposit({
+      from: carol
+    });
+  }
+
   beforeEach(function() {
     chaininsurance = Chaininsurance.deployed();
   });
@@ -28,17 +40,10 @@ contract('Chainsurance: Receive Profis', function(accounts) {
       return chaininsurance.fund.sendTransaction({
         from: carol,
         value: web3.toWei(CAROLS_FUNDING, 'ether')
-      }).then(function() {
-        return chaininsurance.claimDeposit({
-          from: carol
-        }).then(function() {
-          assert.isAbove(balanceInEth(carol), balanceCarolPreFundingReached + ALICE_DEPOSIT - PROBABLE_TX_COST);
-          return chaininsurance.depositedAmount.call().then(function(depositedAmount) {
-            assert.isBelow(1, depositedAmount.valueOf());
-          })
-        });
+      }).then(carolClaimsDeposit).then(function() {
+        assert.isAbove(balanceInEth(carol), balanceCarolPreFundingReached + ALICE_DEPOSIT - PROBABLE_TX_COST);
+        return depositedAmountIsDecreased();
       });
     });
   });
-
 });
