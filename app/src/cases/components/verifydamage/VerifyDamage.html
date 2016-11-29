@@ -19,12 +19,13 @@
 
         <md-card-content>
             <p class="md-title">
-                <i class="material-icons md-18">warning</i> {{ $ctrl.selectedDamage.amount.toFixed(2) }} EUR
+                <i class="material-icons md-18">flash_on</i> {{ $ctrl.selectedDamage.amount.toFixed(2) }} EUR
             </p>
             <p>
                 <span class="md-subhead">{{ $ctrl.selectedDamage.damage }}</span>
             </p>
-            <md-button class="md-raised md-primary">VERIFY</md-button>
+            <md-button class="md-raised md-primary">APPROVE</md-button>
+            <!-- <md-button class="md-raised md-warn"><i class="material-icons">cancel</i> REJECT</md-button> -->
         </md-card-content>
     </md-card>
 </div>

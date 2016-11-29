@@ -11,34 +11,32 @@
             <label>Description</label>
             <textarea ng-model="case.description" md-maxlength="150" rows="3" md-select-on-focus></textarea>
         </md-input-container>
-        <md-slider-container>
-            <span class="md-body-1">Amount</span>
-            <md-slider flex ng-model="case.amount" min="100" max="1000" class="md-primary">
-            </md-slider>
-            <md-input-container>
-                <input flex type="number" ng-model="case.amount">
-            </md-input-container>
-        </md-slider-container>
-        <md-slider-container>
-            <span class="md-body-1">Premium</span>
-            <md-slider flex ng-model="case.premium" min="0" max="100" class="md-primary">
-            </md-slider>
-            <md-input-container>
-                <input flex type="number" ng-model="case.premium">
-            </md-input-container>
-        </md-slider-container>
+        <md-button class="md-primary" href=""><i class="material-icons">add_a_photo</i> Attach Fotos</md-button>
+        <md-input-container class="md-icon-float md-icon-right md-block">
+            <label>Amount Insured</label>
+            <input ng-model="case.amount" type="number" step="1">
+            <md-icon md-svg-src="assets/svg/ic_euro_24px.svg"></md-icon>
+        </md-input-container>
+        <md-input-container class="md-icon-float md-icon-right md-block">
+            <label>Insurance Premium</label>
+            <input ng-model="case.premium" type="number" step="1">
+            <md-icon md-svg-src="assets/svg/ic_euro_24px.svg"></md-icon>
+        </md-input-container>
+        <md-checkbox>
+            <md-select ng-model="case.moderator" placeholder="Validate Damage by Person" class="md-no-underline">
+                <md-option value="1">Shaggy Rodgers</md-option>
+                <md-option value="2">Daphne Blake</md-option>
+                <md-option value="3">Velma Dinkley</md-option>
+            </md-select>
+        </md-checkbox>
+        <md-checkbox>
+            <md-select ng-model="case.service" placeholder="Validate Damage by Service" class="md-no-underline">
+                <md-option value="1">weather.com</md-option>
+                <md-option value="2">World Climate Report</md-option>
+                <md-option value="3">Oraclize</md-option>
+            </md-select>
+        </md-checkbox>
     </form>
-    <md-card>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Lawrence Ray</span>
-                <span class="md-subhead"><i class="material-icons md-18">place</i> Nairobi, Kenia</span>
-            </md-card-title-text>
-            <md-card-title-media>
-                <div class="md-media-sm card-media"><md-icon md-svg-icon="svg-4" class="avatar"></md-icon></div>
-            </md-card-title-media>
-        </md-card-title>
-    </md-card>
     <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
         <md-button class="md-raised md-primary">SUBMIT</md-button>
     </section>

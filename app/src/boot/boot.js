@@ -11,9 +11,7 @@ angular
   .ready( function() {
     angular
       .module( 'starter-app-bootstrap', [ App.name ] )
-      .run(()=>{
-        console.log(`Running the 'starter-app-bootstrap' ES6 Material-Start Tutorial`);
-      });
+      .run();
 
     let body = document.getElementsByTagName("body")[0];
     angular.bootstrap( body, [ 'starter-app-bootstrap' ]);

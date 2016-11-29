@@ -1,4 +1,3 @@
-<h2>Fund Insurance</h2>
 <div ng-show="$ctrl.selectedCase === undefined">
     <md-card ng-repeat="case in $ctrl.cases" ng-click="$ctrl.selectCase(case)">
         <md-card-title>
@@ -14,7 +13,7 @@
             <p class="md-title">
                 <i class="material-icons md-18">data_usage</i> {{ case.percent }} %
                 <i class="material-icons md-18">euro_symbol</i> {{ case.premium.toFixed(2) }}
-                <i class="material-icons md-18">warning</i> {{ case.amount.toFixed(2) }}
+                <i class="material-icons md-18">flash_on</i> {{ case.amount.toFixed(2) }}
             </p>
         </md-card-content>
     </md-card>
@@ -42,17 +41,22 @@
             <p class="md-title">
                 <i class="material-icons md-18">data_usage</i> {{ $ctrl.selectedCase.percent }} %
                 <i class="material-icons md-18">euro_symbol</i> {{ $ctrl.selectedCase.premium.toFixed(2) }}
-                <i class="material-icons md-18">warning</i> {{ $ctrl.selectedCase.amount.toFixed(2) }}
+                <i class="material-icons md-18">flash_on</i> {{ $ctrl.selectedCase.amount.toFixed(2) }}
             </p>
             <p>
                 <span class="md-subhead">{{ $ctrl.selectedCase.description }}</span>
             </p>
-            <md-slider-container class="md-header">
-                <md-slider flex ng-model="$ctrl.fundpercent" min="0" max="{{ 100 - $ctrl.selectedCase.percent }}" class="md-primary"></md-slider>
-            </md-slider-container>
-            <p>Funding {{ $ctrl.fundpercent }} % | Premium {{ ($ctrl.selectedCase.premium * $ctrl.fundpercent / 100).toFixed(2) }}
-             | Amount {{ ($ctrl.selectedCase.amount * $ctrl.fundpercent / 100).toFixed(2) }}</p>
-            <md-button class="md-raised md-primary" ng-disabled="$ctrl.fundpercent === 0">FUND</md-button>
         </md-card-content>
+        <md-card-actions>
+            <form>
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                    <label>Your Share (1 to {{ 100 - $ctrl.selectedCase.percent }} %)</label>
+                    <input ng-model="$ctrl.fundpercent" type="number" step="1">
+                </md-input-container>
+            </form>
+            <p class="md-title">REVENUE {{ ($ctrl.selectedCase.premium * $ctrl.fundpercent / 100).toFixed(2) }}
+                | LIABILITY {{ ($ctrl.selectedCase.amount * $ctrl.fundpercent / 100).toFixed(2) }}</p>
+            <md-button class="md-raised md-primary" ng-disabled="$ctrl.fundpercent <= 0">FUND</md-button>
+        </md-card-actions>
     </md-card>
 </div>
