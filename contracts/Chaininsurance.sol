@@ -35,6 +35,15 @@ contract Chaininsurance {
     }
   }
 
+  function claimDeposit() {
+    var profit = (funders[msg.sender] / insuredAmount) * depositedAmount;
+    if (!msg.sender.send(profit)) {
+      throw;
+    } else {
+      depositedAmount -= profit;
+    }
+  }
+
   function refund(address user) {
     if (user.send(funders[user])) {
       fundedAmount -= funders[user];
