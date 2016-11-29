@@ -8,6 +8,7 @@ contract KrowdSure {
   uint public insuredAmount;
   uint public fundedAmount;
   uint public toBeFundedUntil;
+  uint public depositedAmount;
 
   function KrowdSure(string _content, uint _insuredAmount, address _oracle, uint _toBeFundedUntil) {
     toBeFundedUntil = _toBeFundedUntil;
@@ -20,6 +21,10 @@ contract KrowdSure {
   function fund() payable {
     fundedAmount += msg.value;
     funders[msg.sender] += msg.value;
+  }
+
+  function deposit() payable {
+    depositedAmount += msg.value;
   }
 
   function refund(address user) {

@@ -1,4 +1,5 @@
 contract('KrowdSure', function(accounts) {
+  var alice = accounts[0];
   var bob = accounts[1];
   var oscar = accounts[2];
   var dave = accounts[3];
@@ -14,6 +15,18 @@ contract('KrowdSure', function(accounts) {
 
   beforeEach(function() {
     krowd = KrowdSure.deployed();
+  });
+
+  it('allows users to provide a deposit', function() {
+    var DEPOSIT = 50;
+    return krowd.deposit.sendTransaction({
+      from: alice,
+      value: web3.toWei(DEPOSIT, 'ether')
+    }).then(function() {
+      return krowd.depositedAmount.call().then(function(depositedAmount) {
+        assert.equal(toEth(depositedAmount), DEPOSIT);
+      });
+    });
   });
 
   it('lets users fund', function() {
