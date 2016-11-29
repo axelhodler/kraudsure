@@ -22,4 +22,9 @@ contract KrowdSure {
     funders[msg.sender] += msg.value;
   }
 
+  function refund(address user) {
+    if (!user.send(funders[user])) {
+      throw;
+    }
+  }
 }

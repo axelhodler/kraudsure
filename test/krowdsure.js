@@ -7,6 +7,10 @@ contract('KrowdSure', function(accounts) {
     return web3.fromWei(amount, "ether").toNumber();
   }
 
+  function balanceInEth(account) {
+    return toEth(web3.eth.getBalance(account));
+  }
+
   function nowInSeconds() {
     return Math.round(+new Date().getTime() / 1000);
   }
@@ -63,4 +67,12 @@ contract('KrowdSure', function(accounts) {
       assert.equal(toEth(bobsFundedAmount), 10);
     });
   });
+
+  it('anyone can trigger a refund', function() {
+    var bobBalanceInEthPreRefund = balanceInEth(bob);
+    return krowd.refund(bob).then(function() {
+      assert.equal(balanceInEth(bob), bobBalanceInEthPreRefund + 10);
+    });
+  });
+
 });
