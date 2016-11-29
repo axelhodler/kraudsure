@@ -1,0 +1,12 @@
+<h2>Fund Insurance</h2>
+<md-card ng-repeat="case in $ctrl.cases">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{ case.title }}</span>
+            <span class="md-subhead"> {{ case.name }}</span>
+        </md-card-title-text>
+        <md-card-title-media>
+            <div class="md-media-sm card-media"><md-icon md-svg-icon="{{ case.avatar }}" class="avatar"></md-icon></div>
+        </md-card-title-media>
+    </md-card-title>
+</md-card>
