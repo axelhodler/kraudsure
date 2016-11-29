@@ -1,6 +1,7 @@
 pragma solidity ^0.4.2;
 
 contract KrowdSure {
+  mapping (address => uint) public funders;
   address public insured;
   address public oracle;
   string public content;
@@ -16,6 +17,7 @@ contract KrowdSure {
 
   function fund() payable {
     fundedAmount += msg.value;
+    funders[msg.sender] += msg.value;
   }
 
 }

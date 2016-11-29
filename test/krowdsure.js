@@ -47,4 +47,10 @@ contract('KrowdSure', function(accounts) {
       assert.equal(toEth(amount), 10);
     });
   });
+
+  it('keeps track of the individual contributions', function() {
+    return krowd.funders.call(bob).then(function(bobsFundedAmount) {
+      assert.equal(toEth(bobsFundedAmount), 10);
+    });
+  });
 });
