@@ -5,6 +5,6 @@ export default {
   config : {
     bindings         : { },
     templateUrl      : 'src/cases/components/fundcase/FundCase.html',
-    controller       : [ 'CasesDataService', 'ContractService', '$log', FundCaseController ]
+    controller       : [ 'CasesDataService', 'ContractService', '$log', '$scope', FundCaseController ]
   }
 };
