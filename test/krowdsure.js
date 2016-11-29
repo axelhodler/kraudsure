@@ -1,5 +1,6 @@
 contract('KrowdSure', function(accounts) {
   var bob = accounts[1];
+  var oscar = accounts[2];
   var krowd;
 
   function toEth(amount) {
@@ -19,6 +20,12 @@ contract('KrowdSure', function(accounts) {
   it('takes the insuredamount as an argument', function() {
     return krowd.insuredAmount.call().then(function(insuredamount) {
       assert.equal(insuredamount, 10000);
+    });
+  });
+
+  it('requires the address of an oracle to be specified during creation', function() {
+    return krowd.oracle.call().then(function(oracle) {
+      assert.equal(oracle, oscar);
     });
   });
 
