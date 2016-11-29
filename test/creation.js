@@ -18,7 +18,7 @@ contract('ChainInsurance', function(accounts) {
 
   it('takes the insuredamount as an argument', function() {
     return chaininsurance.insuredAmount.call().then(function(insuredamount) {
-      assert.equal(insuredamount, 10000);
+      assert.equal(insuredamount, 1000);
     });
   });
 
