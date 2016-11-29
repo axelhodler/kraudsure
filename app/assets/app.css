@@ -146,3 +146,14 @@ md-input-container {
     overflow: hidden;
     padding: 0;
 }
+
+.fund-amount {
+    font-size: 20px;
+}
+
+.home-teaser {
+    background: rgb(33,150,243);
+    margin-top: 40px;
+    color: #fff;
+    font-size: 18px;
+}

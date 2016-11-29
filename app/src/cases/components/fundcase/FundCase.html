@@ -56,7 +56,7 @@
             <form>
                 <md-input-container class="md-icon-float md-icon-right md-block">
                     <label>Your Share (1.00 to {{ ((100 - $ctrl.selectedCase.percent) / 100 * $ctrl.selectedCase.amount).toFixed(2) }} EUR)</label>
-                    <input ng-model="$ctrl.fundamount" type="number" step="1">
+                    <input ng-model="$ctrl.fundamount" type="number" step="1" class="fund-amount">
                     <md-icon md-svg-src="assets/svg/ic_euro_24px.svg"></md-icon>
                 </md-input-container>
             </form>
