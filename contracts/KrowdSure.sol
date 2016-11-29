@@ -28,8 +28,10 @@ contract KrowdSure {
   }
 
   function issueClaim() {
-    if (!insured.send(fundedAmount)) {
-      throw;
+    if (msg.sender == oracle) {
+      if (!insured.send(fundedAmount)) {
+        throw;
+      }
     }
   }
 

@@ -4,6 +4,7 @@ contract('KrowdSure', function(accounts) {
   var oscar = accounts[2];
   var dave = accounts[3];
   var krowd;
+  var TRANSACTION_COST = 0.5;
 
   function toEth(amount) {
     return web3.fromWei(amount, "ether").toNumber();
@@ -67,10 +68,17 @@ contract('KrowdSure', function(accounts) {
     });
   });
 
-  it('can trigger the claim transaction', function() {
+  it('does not allow the insured to trigger the claim transaction', function() {
     var aliceBalanceInEthPreRefund = balanceInEth(alice);
     return krowd.issueClaim().then(function() {
-      assert.isAbove(balanceInEth(alice), aliceBalanceInEthPreRefund + 20 - 0.5);
+      assert.isAbove(balanceInEth(alice), aliceBalanceInEthPreRefund - TRANSACTION_COST);
+    });
+  });
+
+  it('only the oracle can trigger the claim transaction', function() {
+    var aliceBalanceInEthPreRefund = balanceInEth(alice);
+    return krowd.issueClaim({from: oscar}).then(function() {
+      assert.isAbove(balanceInEth(alice), aliceBalanceInEthPreRefund + 20 - TRANSACTION_COST);
     });
   });
 });
