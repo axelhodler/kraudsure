@@ -50,7 +50,7 @@ function CasesDataService() {
         location: 'Mombasa, Kenya',
         avatar: 'svg-2',
         title: 'Flood Insurance',
-        damage: 'My village was flooded and caused damage in housing of about 1000.00 EUR',
+        damage: 'My village was flooded. Damage in housing of 1000.00 EUR',
         image: 'assets/images/flood.png',
         amount: 1000
     }
