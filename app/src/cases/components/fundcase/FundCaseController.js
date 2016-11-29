@@ -4,6 +4,7 @@ class FundCaseController  {
     this.$log = $log;
     this.fundpercent = 0;
     this.cases = CasesDataService.loadAllCases();
+    this.fundedAmount = ContractService.fundedAmount();
     this.contractService = ContractService;
   }
 
