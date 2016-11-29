@@ -28,7 +28,9 @@ function ContractService() {
   };
 
   this.issueClaim = function() {
-    return contract.issueClaim();
+    return contract.issueClaim({
+      from: currentUserAddress()
+    });
   };
 
   this.refund = function() {
