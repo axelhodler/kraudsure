@@ -1,6 +1,7 @@
 contract('KrowdSure', function(accounts) {
   var bob = accounts[1];
   var oscar = accounts[2];
+  var dave = accounts[3];
   var krowd;
 
   function toEth(amount) {
@@ -29,8 +30,13 @@ contract('KrowdSure', function(accounts) {
   });
 
   it('keeps track of the individual contributions', function() {
-    return krowd.funders.call(bob).then(function(bobsFundedAmount) {
-      assert.equal(toEth(bobsFundedAmount), 10);
+    return krowd.fund.sendTransaction({
+      from: dave,
+      value: web3.toWei(20, 'ether')
+    }).then(function() {
+      return krowd.funders.call(dave).then(function(davesFundedAmount) {
+        assert.equal(toEth(davesFundedAmount), 20);
+      });
     });
   });
 

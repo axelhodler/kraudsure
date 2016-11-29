@@ -40,4 +40,5 @@ contract('KrowdSure', function(accounts) {
     });
   });
 
+
 });
