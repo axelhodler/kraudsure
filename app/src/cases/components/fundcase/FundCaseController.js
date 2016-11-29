@@ -1,7 +1,8 @@
 class FundCaseController  {
 
-  constructor(CasesDataService, ContractService, $log) {
+  constructor(CasesDataService, ContractService, $log, $scope) {
     this.$log = $log;
+    this.$scope = $scope;
     this.fundpercent = 0;
     this.cases = CasesDataService.loadAllCases();
     this.fundedAmount = ContractService.fundedAmount();
@@ -18,7 +19,10 @@ class FundCaseController  {
   }
 
   fund() {
-    this.contractService.fund();
+    this.contractService.fund(this.fundamount).then(() => {
+      this.selectedCase.percent = 100;
+      this.$scope.$apply();
+    });
   }
 }
 export default FundCaseController;
