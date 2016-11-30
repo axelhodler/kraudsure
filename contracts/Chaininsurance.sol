@@ -21,13 +21,11 @@ contract Chaininsurance {
   function fund() payable {
     fundedAmount += msg.value;
     funders[msg.sender] += msg.value;
-    if (fundedAmount >= insuredAmount) {
-      var profit = (funders[msg.sender] / insuredAmount) * depositedAmount;
-      if (!msg.sender.send(profit)) {
-        throw;
-      } else {
-        depositedAmount -= profit;
-      }
+    var profit = (funders[msg.sender] / insuredAmount) * depositedAmount;
+    if (!msg.sender.send(profit)) {
+      throw;
+    } else {
+      depositedAmount -= profit;
     }
   }
 
