@@ -24,9 +24,8 @@
             <p>
                 <span class="md-subhead">{{ $ctrl.selectedDamage.damage }}</span>
             </p>
-            <md-button ng-click="$ctrl.approve()"
-                       class="md-raised md-primary">APPROVE</md-button>
-            <!-- <md-button class="md-raised md-warn"><i class="material-icons">cancel</i> REJECT</md-button> -->
+            <md-button ng-click="$ctrl.approve()" ng-if="!$ctrl.approved" class="md-raised md-primary">APPROVE</md-button>
+            <p class="text-success" ng-if="$ctrl.approved"><i class="material-icons">check_circle</i> APPROVED</md-button></p>
         </md-card-content>
     </md-card>
 </div>

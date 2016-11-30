@@ -65,7 +65,7 @@
             <md-button ng-if="$ctrl.selectedCase.percent < 100" class="md-raised md-primary"
                        ng-click="$ctrl.fund()"
                        ng-disabled="$ctrl.fundamount <= 0 || $ctrl.fundamount > ((100 - $ctrl.selectedCase.percent) / 100 * $ctrl.selectedCase.amount)">FUND</md-button>
-            <p class="md-heading" ng-if="$ctrl.selectedCase.percent === 100" style="color: rgb(76, 175, 80); font-size: 22px;"><i class="material-icons">check_circle</i> FULLY FUNDED</md-button></p>
+            <p class="text-success" ng-if="$ctrl.selectedCase.percent === 100"><i class="material-icons">check_circle</i> FULLY FUNDED</md-button></p>
         </md-card-actions>
     </md-card>
 </div>

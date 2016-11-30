@@ -157,3 +157,8 @@ md-input-container {
     color: #fff;
     font-size: 18px;
 }
+
+.text-success {
+    color: rgb(76, 175, 80);
+    font-size: 22px;
+}

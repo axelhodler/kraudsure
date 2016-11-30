@@ -1,7 +1,8 @@
 class VerifyDamageController  {
 
-  constructor(CasesDataService, ContractService, $log) {
+  constructor(CasesDataService, ContractService, $log, $scope) {
     this.$log = $log;
+    this.$scope = $scope;
     this.contractService = ContractService;
     this.fundpercent = 0;
     this.damages = CasesDataService.loadAllDamages();
@@ -18,6 +19,8 @@ class VerifyDamageController  {
 
   approve() {
     this.contractService.issueClaim().then(() => {
+        this.approved = true;
+        this.$scope.$apply();
     });
   }
 }

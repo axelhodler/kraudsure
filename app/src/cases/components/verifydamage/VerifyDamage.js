@@ -5,6 +5,6 @@ export default {
   config : {
     bindings         : { },
     templateUrl      : 'src/cases/components/verifydamage/VerifyDamage.html',
-    controller       : [ 'CasesDataService', 'ContractService', '$log', VerifyDamageController ]
+    controller       : [ 'CasesDataService', 'ContractService', '$log', '$scope', VerifyDamageController ]
   }
 };
