@@ -40,7 +40,7 @@ contract('Chainsurance: Receive Profis', function(accounts) {
       return chaininsurance.fund.sendTransaction({
         from: carol,
         value: web3.toWei(CAROLS_FUNDING, 'ether')
-      }).then(carolClaimsDeposit).then(function() {
+      }).then(function() {
         assert.isAbove(balanceInEth(carol), balanceCarolPreFundingReached + ALICE_DEPOSIT - PROBABLE_TX_COST);
         return depositedAmountIsDecreased();
       });

@@ -22,8 +22,6 @@ class FundCaseController  {
     this.contractService.fund(this.fundamount).then(() => {
       this.selectedCase.percent = 100;
       this.$scope.$apply();
-    }).then(() => {
-      return this.contractService.claimDeposit();
     });
   }
 }
